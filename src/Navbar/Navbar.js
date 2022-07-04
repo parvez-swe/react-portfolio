@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import { links, social } from "../data";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
@@ -22,7 +23,7 @@ const Navbar = () => {
       <div className="nav-center">
         <div className="nav-header">
           <div className="logo">
-            <p>My portfolio</p>
+            <Link to="/">My portfolio</Link>
           </div>
           <button className="nav-toggle" onClick={toggleLinks}>
             <FaBars />
@@ -33,9 +34,13 @@ const Navbar = () => {
             {links.map((link) => {
               const { id, url, text } = link;
               return (
-                <li key={id}>
-                  <a href={url}>{text}</a>
-                </li>
+                <Link to={url} key={id}>
+                  {text}
+                </Link>
+
+                // <li key={id}>
+                //   <a href={url}>{text}</a>
+                // </li>
               );
             })}
           </ul>
